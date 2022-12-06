@@ -33,7 +33,7 @@
     $celular = $conn->real_escape_string($_POST['Celular']); // prepara a string recebida para ser utilizada em comando SQL
     $senha   = $conn->real_escape_string($_POST['Senha1']); // prepara a string recebida para ser utilizada em comando SQL
     
-    // Faz Select na Base de Dados
+    // Faz Insert na Base de Dados
     $sql = "INSERT INTO Usuario (Nome, Celular, Login, Senha) VALUES ('$nome','$celular','$login',md5('$senha'))";
 
     if ($result = $conn->query($sql)) {
@@ -48,7 +48,9 @@
         $_SESSION ['nao_autenticado'] = true;
         $_SESSION ['mensagem_header'] = "Cadastro";
         $_SESSION ['mensagem']        = $msg;
-        header('location: /ConsultorioLogin/index.php');
+        header('location: /ConsultorioLogin/index.php'); //Redireciona para página inicial, para tentativa de login com o 
+                                                               // usuário recém cadastrado
+ 
         exit();
         }
         header('location: index.php');

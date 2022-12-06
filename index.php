@@ -20,12 +20,13 @@
 	</head>
 	<body >  
         <?php
-            session_start();
-            if (isset($_SESSION ['login'])) {                               // Se existe usuário logado 
+            session_start(); // Cria uma sessão ou retoma a sessão atual 
+            if (isset($_SESSION ['login'])) {                               // Verifica se existe usuário logado 
                 header("location: /ConsultorioLogin/medlistar.php");  // Vai para as funcionalidades do site
                 exit();
             }
         ?>
+        <!-- Não encontrou usuário logado, então mostra página inicial -->
         <!-- Menu Superior -->
         <div class="w3-top" id="LoginCadastro" >
             <div class="w3-row w3-white w3-padding" >
@@ -34,9 +35,9 @@
                 </div>
             </div>
             <div class="w3-bar w3-theme w3-large" style="z-index:-1">
-            <a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open('LoginCadadstro')">☰</a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" href="javascript:void(0)" >Login</a>
-                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'"href="javascript:void(0)" ">Cadastro</a>
+            <a class="w3-bar-item w3-button w3-left w3-hide-large w3-hover-light-gray w3-large w3-theme w3-padding-16" href="javascript:void(0)" onclick="w3_open('LoginCadastro')">☰</a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0L').style.display='block'" >Login</a>
+                <a class="w3-bar-item w3-button w3-hide-medium w3-hide-small w3-hover-light-gray w3-padding-16" onclick="document.getElementById('id0C').style.display='block'">Cadastro</a>
             </div>
 	    </div>
         <!-- Logo da página -->
@@ -68,24 +69,22 @@
                 <h1 class="w3-jumbo">Consultório</h1>
 
                 <img src="imagens/quadro.jpg" class="w3-round-xxlarge" style="max-width:800px">
-                                      
-                <!-- LOGIN FAIL MODAL: login incorreto ou cadastro incorreto --> 
+                                
                 <?php
-                    $msg        = "";
-                    $msg_header = "";
-                    if(isset($_SESSION['nao_autenticado'])){ 
-                        $msg        = $_SESSION['mensagem'];
-                        $msg_header = $_SESSION['mensagem_header'];
-                ?>
-                <div id="LF" class="w3-modal " style="display:block;">
-                <?php 
-                    }else{ 
-                ?>
-                <div id="LF" class="w3-modal " style="display:none;">
-                <?php
+                $msg        = "";
+                $msg_header = "";
+                if(isset($_SESSION['nao_autenticado'])){ 
+                    // Houve falha(login incorreto ou cadastro incorreto)
+                    $msg        = $_SESSION['mensagem'];
+                    $msg_header = $_SESSION['mensagem_header'];
+                    $style      = "display:block"; // div aparece 
+                }else{
                     unset($_SESSION['nao_autenticado']);
-                    }
+                    $style      = "display:none"; // div não aparece 
+                }
                 ?>
+                <!-- MODAL FAIL: Houve falha(login incorreto ou cadastro incorreto) ou não  --> 
+                <div id="LF" class="w3-modal " style="<?php echo $style;?>">  
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
                         <div class="w3-center"> 
                             <span onclick="document.getElementById('LF').style.display='none'" class="w3-button w3-xlarge w3-transparent w3-display-topright" title="Close Modal">×</span>
@@ -96,8 +95,8 @@
                         <br>
                     </div>
                 </div>
-                
-                <!-- LOGIN MODAL: pop up para realizar Login --> 
+            
+                <!-- MODAL LOGIN: pop up para realizar Login --> 
                 <div id="id0L" class="w3-modal ">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
 
@@ -128,7 +127,7 @@
 
                     </div>
                 </div>
-                <!-- LOGIN CADASTRO: pop up para realizar Cadastro - --> 
+                <!-- MODAL CADASTRO: pop up para realizar Cadastro - --> 
                 <div id="id0C" class="w3-modal">
                     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
                         <div class="w3-center"> 

@@ -34,22 +34,22 @@
     // Faz Select na Base de Dados
     $sql = "SELECT ID_Usuario, nome FROM Usuario WHERE login = '$usuario' AND senha = md5('$senha')";
     if ($result = $conn->query($sql)) {
-        if ($result->num_rows == 1) {
+        if ($result->num_rows == 1) {         // Deu match: login e senha combinaram
             $row = $result->fetch_assoc();
-            $_SESSION ['login']       = $usuario;
+            $_SESSION ['login']       = $usuario;           // Ativa as variáveis de sessão
             $_SESSION ['ID_Usuario']  = $row['ID_Usuario'];
             $_SESSION ['nome']        = $row['nome'];
             unset($_SESSION['nao_autenticado']);
             unset($_SESSION ['mensagem_header'] ); 
             unset($_SESSION ['mensagem'] ); 
-            header('location: /ConsultorioLogin/medlistar.php');
+            header('location: /ConsultorioLogin/medlistar.php'); // Redireciona para a página de funcionalidades.
             exit();
             
         }else{
-            $_SESSION ['nao_autenticado'] = true;
+            $_SESSION ['nao_autenticado'] = true;         // Ativa ERRO nas variáveis de sessão
             $_SESSION ['mensagem_header'] = "Login";
             $_SESSION ['mensagem']        = "ERRO: Login ou Senha inválidos.";
-            header('location: /ConsultorioLogin/index.php');
+            header('location: /ConsultorioLogin/index.php'); // Redireciona para página inicial
             exit();
         }
     }
