@@ -122,7 +122,7 @@
                     echo "</table>";
                     echo "</div>";
                 } else {
-                    echo "<p style='text-align:center'>Erro executando SELECT: " . $conn->connect_error . "</p>";
+                    echo "<p style='text-align:center'>Erro executando SELECT: " . $conn-> error . "</p>";
                 }
                 $conn->close();
                     ?>

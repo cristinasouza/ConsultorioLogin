@@ -57,7 +57,7 @@
 						array_push($optionsEspec, "\t\t\t<option value='" . $row["ID_Espec"] . "'>" . $row["Nome_Espec"] . "</option>\n");
 					}
 				} else {
-					echo "Erro executando SELECT: " . $conn->connect_error;
+					echo "Erro executando SELECT: " . $conn-> error;
 				}
 				$conn->close();
 				?>

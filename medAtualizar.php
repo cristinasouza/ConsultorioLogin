@@ -155,7 +155,7 @@
 				<?php
 					}
 				} else {					
-					echo "<p style='text-align:center'>Erro executando UPDATE: " . $conn->connect_error . "</p>";
+					echo "<p style='text-align:center'>Erro executando UPDATE: " . $conn-> error . "</p>";
 				}
 				echo "</div>"; //Fim form
 				$conn->close(); //Encerra conexao com o BD

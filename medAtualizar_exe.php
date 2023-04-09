@@ -72,7 +72,7 @@
 			if ($result = $conn->query($sql)) {
 				echo "<p>&nbsp;Registro alterado com sucesso! </p>";
 			} else {
-				echo "<p style='text-align:center'>Erro executando UPDATE: " . $conn->connect_error . "</p>";
+				echo "<p style='text-align:center'>Erro executando UPDATE: " . $conn-> error . "</p>";
 			}
 			echo "</div>";
 			$conn->close(); //Encerra conexao com o BD

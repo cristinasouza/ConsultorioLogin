@@ -67,7 +67,7 @@
 					if ($result = $conn->query($sql)) {
 						echo "<p>&nbsp;Registro cadastrado com sucesso! </p>";
 					} else {
-						echo "<p style='text-align:center'>Erro executando INSERT: " . $conn->connect_error . "</p>";
+						echo "<p style='text-align:center'>Erro executando INSERT: " . $conn-> error . "</p>";
 					}
 					echo "</div>";
 					$conn->close();  //Encerra conexao com o BD

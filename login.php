@@ -39,7 +39,7 @@
             $_SESSION ['login']       = $usuario;           // Ativa as variáveis de sessão
             $_SESSION ['ID_Usuario']  = $row['ID_Usuario'];
             $_SESSION ['nome']        = $row['nome'];
-            unset($_SESSION['nao_autenticado']);
+            unset($_SESSION ['nao_autenticado']);
             unset($_SESSION ['mensagem_header'] ); 
             unset($_SESSION ['mensagem'] ); 
             header('location: /ConsultorioLogin/medlistar.php'); // Redireciona para a página de funcionalidades.
@@ -54,7 +54,7 @@
         }
     }
     else {
-        echo "Erro ao acessar o BD: " . mysqli_error($conn);
+        echo "Erro ao acessar o BD: " . $conn ->error;
     }
     $conn->close();  //Encerra conexao com o BD
 ?>

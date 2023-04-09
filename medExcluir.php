@@ -93,7 +93,7 @@
 						<br>
 				<?php }
 				} else {
-					echo "<p style='text-align:center'>Erro executando DELETE: " . $conn->connect_error . "</p>";
+					echo "<p style='text-align:center'>Erro executando DELETE: " . $conn-> error . "</p>";
 				}
 				echo "</div>"; //Fim form
 				$conn->close();  //Encerra conexao com o BD
