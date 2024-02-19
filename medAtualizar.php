@@ -73,7 +73,10 @@
 
 						if ($result->num_rows > 0) {
 							while ($row = $result->fetch_assoc()) {
-								array_push($optionsEspec, "\t\t\t<option value='" . $row["ID_Espec"] . "'>" . $row["Nome_Espec"] . "</option>\n");
+								$selected = "";
+								if ($row['ID_Espec'] == $especialidade)
+									$selected = "selected";
+								array_push($optionsEspec, "\t\t\t<option . $selected . value='" . $row["ID_Espec"] . "'>" . $row["Nome_Espec"] . "</option>\n");
 							}
 						} else {
 							echo "Erro executando SELECT: " . $conn->connect_error;
