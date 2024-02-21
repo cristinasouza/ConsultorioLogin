@@ -1,21 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 02-Dez-2022 às 03:35
--- Versão do servidor: 10.4.25-MariaDB
--- versão do PHP: 7.4.30
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+DROP DATABASE IF EXISTS clinicaa;
+CREATE DATABASE clinicaa;
+USE clinicaa;
 
 --
 -- Banco de dados: `clinicaa`
@@ -28,7 +13,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `especialidade` (
-  `ID_Espec` int(11) NOT NULL,
+  `ID_Espec` INT NOT NULL,
   `Nome_Espec` varchar(100) NOT NULL,
   `Descricao` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -49,10 +34,10 @@ INSERT INTO `especialidade` (`ID_Espec`, `Nome_Espec`, `Descricao`) VALUES
 --
 
 CREATE TABLE `medico` (
-  `ID_Medico` int(11) NOT NULL,
+  `ID_Medico` INT NOT NULL,
   `CRM` varchar(15) NOT NULL,
   `Nome` varchar(100) NOT NULL,
-  `ID_Espec` int(11) NOT NULL,
+  `ID_Espec` INT NOT NULL,
   `Dt_Nasc` date DEFAULT NULL,
   `Foto` mediumblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -76,7 +61,7 @@ INSERT INTO `medico` (`ID_Medico`, `CRM`, `Nome`, `ID_Espec`, `Dt_Nasc`, `Foto`)
 --
 
 CREATE TABLE `usuario` (
-  `ID_Usuario` int(11) NOT NULL,
+  `ID_Usuario` INT NOT NULL,
   `Nome` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `Celular` varchar(20) COLLATE latin1_general_ci NOT NULL,
   `Login` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
@@ -122,19 +107,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `especialidade`
 --
 ALTER TABLE `especialidade`
-  MODIFY `ID_Espec` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Espec` INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `ID_Medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID_Medico` INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID_Usuario` INT NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restrições para despejos de tabelas
@@ -147,6 +132,4 @@ ALTER TABLE `medico`
   ADD CONSTRAINT `FK_ID_Espec` FOREIGN KEY (`ID_Espec`) REFERENCES `especialidade` (`ID_Espec`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

@@ -65,7 +65,7 @@
 				$sql = "UPDATE Medico SET Nome = '$nome', CRM = '$CRM', Dt_Nasc = '$dtNasc', ID_Espec = '$espec' WHERE ID_Medico = $id";
 			}else{
 				$imagem = addslashes(file_get_contents($_FILES['Imagem']['tmp_name'])); // Prepara para salvar em BD
-				$sql = "UPDATE Medico SET Nome = '$nome', CRM = '$CRM', Dt_Nasc = '$dtNasc', , ID_Espec = '$espec', Foto = '$imagem' WHERE ID_Medico = $id";	
+				$sql = "UPDATE Medico SET Nome = '$nome', CRM = '$CRM', Dt_Nasc = '$dtNasc', ID_Espec = '$espec', Foto = '$imagem' WHERE ID_Medico = $id";	
 			}
 
 			echo "<div class='w3-responsive w3-card-4'>";

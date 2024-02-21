@@ -94,9 +94,9 @@
 						<td>
 						<p style="text-align:center"><label class="w3-text-IE"><b>Minha Imagem para Identificação: </b></label></p>
 						<p style="text-align:center"><img id="imagemSelecionada" src="imagens/pessoa.jpg" /></p>
-						<p style="text-align:center"><label class="w3-btn w3-theme">Selecione uma Imagem</label>
+						<p style="text-align:center"><label class="w3-btn w3-theme">Selecione uma Imagem
 								<input type="hidden" name="MAX_FILE_SIZE" value="16777215" />
-								<input type="file" id="Imagem" name="Imagem" accept="imagem/*" onchange="validaImagem(this);"> 
+								<input type="file" id="Imagem" name="Imagem" accept="imagem/*" onchange="validaImagem(this);"></label>
 						</p>
 						</td>
 						</tr>
